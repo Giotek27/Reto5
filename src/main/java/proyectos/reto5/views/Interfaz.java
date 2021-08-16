@@ -1,10 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package proyectos.reto5.views;
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -21,8 +15,7 @@ import proyectos.reto5.modelo.vo.Requerimiento_3;
  * @author sergi
  */
 public class Interfaz extends javax.swing.JFrame {
-
-    /**
+     /**
      * Creates new form Interfaz
      */
     public Interfaz() {
@@ -352,15 +345,16 @@ public class Interfaz extends javax.swing.JFrame {
     private void BotonConsultar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonConsultar3ActionPerformed
         String[] columnNombre={"ID_Compra","Pagado","Fecha"};
         try {
+           // El arreglo de objetos que se va a mostrar en la tabla
             ArrayList <Requerimiento_3> lista = controlador.consultarRequerimiento3();
             Object[][] datos = new Object[lista.size()][3];
-
+            // Dentro de un ciclo for se van a iterar los objetos de la lista
             for (int i = 0 ; i < lista.size();i++) {
                 datos[i][0] = lista.get(i).getID_Compra();
                 datos[i][1] = lista.get(i).getPagado();
                 datos[i][2] = lista.get(i).getFecha();
             }
-            
+            // Se crea el modelo de la tabla
             DefaultTableModel model = new DefaultTableModel(datos,columnNombre);
             Tabla3.setModel(model);
         } catch (SQLException e) {
@@ -370,7 +364,9 @@ public class Interfaz extends javax.swing.JFrame {
     }
 
     private void Eliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Eliminar1ActionPerformed
+        // Se crea una ventana de dialogo
         int confirmar=JOptionPane.showConfirmDialog(null,"¡¿Esta seguro de que desea limpiar?!");
+        //el if se encarga de que se limpie la tabla 
         if(confirmar==JOptionPane.OK_OPTION){
             TablaSiPagados.setModel(new DefaultTableModel());
         }else{
@@ -457,3 +453,4 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }
+
